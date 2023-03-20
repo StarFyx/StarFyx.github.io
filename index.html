@@ -145,6 +145,212 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/20/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuexin Fu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BLOG PAGE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/20/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B(2)/" class="post-title-link" itemprop="url">python面向对象编程(2)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-03-20 15:32:49 / Modified: 15:34:11" itemprop="dateCreated datePublished" datetime="2023-03-20T15:32:49+08:00">2023-03-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="私有"><a href="#私有" class="headerlink" title="私有"></a>私有</h2><p>私有类只能在类内修改和访问，不能外部访问和修改<br><strong>python的私有类约定俗成的在变量前加两个下划线</strong></p>
+<p>定义一个含有私有变量的类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.__score = score</span><br><span class="line"></span><br><span class="line">student = Student(<span class="string">&quot;Jack&quot;</span>, <span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+<p><code>print(student.name)</code>会显示名字，但是<code>print(student.__score)</code>会报错<code>AttributeError: &#39;Student&#39; object has no attribute &#39;__score&#39;</code></p>
+<h3 id="外部访问私有变量"><a href="#外部访问私有变量" class="headerlink" title="外部访问私有变量"></a>外部访问私有变量</h3><p>如果需要留有外部访问私有变量或者传入值的话，在类中定义对应的函数方法即可，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_score</span>(<span class="params">self, score</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= score &lt;= <span class="number">100</span>:</span><br><span class="line">            self.__score = score</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;bad score&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>类的继承是指一个类可以从另一个类继承所有的方法和属性，继承的类被称为子类，继承的类被称为父类或基类<br>继承的语法为 <code>class + 子类名称(父类名称)：</code></p>
+<h3 id="继承简单例子"><a href="#继承简单例子" class="headerlink" title="继承简单例子"></a>继承简单例子</h3><ol>
+<li><p>定义一个父类，Animal</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sound</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;I am an animal.&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再定义一个子类去继承</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(name)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bark</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Woof!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>输出结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个dog对象</span></span><br><span class="line">dog = Dog(<span class="string">&quot;Buddy&quot;</span>)</span><br><span class="line"><span class="comment"># 父类中的函数</span></span><br><span class="line">dog.sound()</span><br><span class="line"><span class="comment"># 子类中的函数</span></span><br><span class="line">dog.bark()</span><br></pre></td></tr></table></figure>
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是让一个类有多重形式，或者同一个函数被不同的类用不同的方式实现</p>
+<h3 id="多态的例子"><a href="#多态的例子" class="headerlink" title="多态的例子"></a>多态的例子</h3><ol>
+<li>定义一个父类，有一个计算面积的方法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>用两个子类继承父类，并且对父类的Shape进行重新定义</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span>(<span class="title class_ inherited__">Shape</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, radius</span>):</span><br><span class="line">        self.radius = radius</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3.14</span> * self.radius ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span>(<span class="title class_ inherited__">Shape</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, length, width</span>):</span><br><span class="line">        self.length = length</span><br><span class="line">        self.width = width</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.length * self.width</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>再定义一个使用方法的函数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">circle = Circle(<span class="number">3</span>)</span><br><span class="line">rectangle = Rectangle(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_area</span>(<span class="params">shape</span>):</span><br><span class="line">    <span class="keyword">return</span> shape.area()</span><br></pre></td></tr></table></figure>
+<p>调用函数即可计算不同的面积</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(get_area(circle))</span><br><span class="line"><span class="built_in">print</span>(get_area(rectangle))</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/20/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuexin Fu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BLOG PAGE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/20/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B(1)/" class="post-title-link" itemprop="url">python面向对象编程(1)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-03-20 15:32:06 / Modified: 15:34:00" itemprop="dateCreated datePublished" datetime="2023-03-20T15:32:06+08:00">2023-03-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>python官方文档中有详细的说明和解释进行参考<br><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/tutorial/classes.html">https://docs.python.org/zh-cn/3/tutorial/classes.html</a></p>
+<h2 id="python-和-C-中类的区别"><a href="#python-和-C-中类的区别" class="headerlink" title="python 和 C++ 中类的区别"></a>python 和 C++ 中类的区别</h2><p>python中类也是面向对象的，把需要的函数或者模块看做一组对象的集合</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>python</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类的本质</td>
+<td>类是一个抽象的对象，类本身也是对象</td>
+<td>类是一段抽象的代码段，类不是对象</td>
+</tr>
+<tr>
+<td>类的继承</td>
+<td>支持多继承，可以从多个父类继承属性和方法</td>
+<td>支持单继承和多重继承，可以从一个或多个父类继承属性和方法</td>
+</tr>
+<tr>
+<td>类的访问控制</td>
+<td>没有严格的私有、公有、保护等访问控制符号，只能通过约定俗成的下划线来表示私有属性或方法</td>
+<td>有private、public、protected等访问控制符号，可以明确地限制属性或方法的可见性</td>
+</tr>
+<tr>
+<td>类的构造函数和析构函数</td>
+<td>构造函数是<code>__init__</code>方法，析构函数是<code>__del__</code>方法，都需要显式地定义和调用</td>
+<td>构造函数和析构函数与类同名，都会自动地定义和调用</td>
+</tr>
+</tbody></table>
+<h2 id="python中类的定义"><a href="#python中类的定义" class="headerlink" title="python中类的定义"></a>python中类的定义</h2><p>1.定义的格式为 关键字<code>class</code> + 类名 +  <code>：</code><br>2. <strong>init 前后分别有两个下划线</strong><br>3. init的第一个参数永远是self，表示创建实例，在之后使用Person类的时候不用管self直接写入其它的参数即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello, I am &quot;</span> + self.name + <span class="string">&quot;.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="类对象的两种操作方式"><a href="#类对象的两种操作方式" class="headerlink" title="类对象的两种操作方式"></a>类对象的两种操作方式</h2><h3 id="属性化引用"><a href="#属性化引用" class="headerlink" title="属性化引用"></a>属性化引用</h3><p>属性引用 使用 Python 中所有属性引用所使用的标准语法：<code>obj.name</code> 有效的属性名称是类对象被创建时存在于类命名空间中的所有名称</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A simple example class&quot;&quot;&quot;</span></span><br><span class="line">    i = <span class="number">12345</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>MyClass.i</code>  返回整数对象</li>
+<li><code>MyClass.f</code>  返回字符串对象</li>
+<li>对象也可以重新赋值进行修改</li>
+</ul>
+<h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello, I am &quot;</span> + self.name + <span class="string">&quot;.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建实例化的person类带上参数 <code>person = Person(&quot;Alice&quot;)</code></li>
+<li>利用创建的对象进行函数调用 <code>person.greet()</code></li>
+</ul>
+<p>用类管理时无需知道内部细节，也可以随时增加类内的方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/python%E5%85%83%E7%BB%84%20%E5%AD%97%E5%85%B8%20%E6%A8%A1%E5%9D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -834,7 +1040,7 @@ $ ssh-keygen -t rsa -C &quot;fu_yuexin@qq.com&quot;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
