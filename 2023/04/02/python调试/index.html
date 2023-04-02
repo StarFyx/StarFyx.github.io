@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="元组 元组在初始化时一旦确定就无法更改，因此没有append等函数，其他和list类似 用小括号（）表示 空元素定义 my_tuple &#x3D; () 只定义元素个数 my_tuple &#x3D; (2) 定义一个元素加上逗号  my_tuple &#x3D; (2,) 内置函数比较不同元组 cmp(tuple1, tuple2)长度 len(tuple1)列表转化为元组 tuple(my_">
+  <meta name="description" content="python调试常用方法1. print()打印输出  不推荐，会造成代码不易于维护2. assert断言，可以在运行程序时候使用-0关闭3. logg文件，见上个有关错误处理的学习笔记4. pycharm等IDE编程自带调试，方便打断点，单步多步运行，也可以观察变量值5. python  pdb调试 自己通常使用第四种方法，借助IDE进行调试运行 pdb调试方法分为直接启动和加入断点调试两种方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python元组、字典、模块">
-<meta property="og:url" content="http://example.com/2023/03/02/python%E5%85%83%E7%BB%84%20%E5%AD%97%E5%85%B8%20%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="python调试常用方法">
+<meta property="og:url" content="http://example.com/2023/04/02/python%E8%B0%83%E8%AF%95/index.html">
 <meta property="og:site_name" content="BLOG PAGE">
-<meta property="og:description" content="元组 元组在初始化时一旦确定就无法更改，因此没有append等函数，其他和list类似 用小括号（）表示 空元素定义 my_tuple &#x3D; () 只定义元素个数 my_tuple &#x3D; (2) 定义一个元素加上逗号  my_tuple &#x3D; (2,) 内置函数比较不同元组 cmp(tuple1, tuple2)长度 len(tuple1)列表转化为元组 tuple(my_">
+<meta property="og:description" content="python调试常用方法1. print()打印输出  不推荐，会造成代码不易于维护2. assert断言，可以在运行程序时候使用-0关闭3. logg文件，见上个有关错误处理的学习笔记4. pycharm等IDE编程自带调试，方便打断点，单步多步运行，也可以观察变量值5. python  pdb调试 自己通常使用第四种方法，借助IDE进行调试运行 pdb调试方法分为直接启动和加入断点调试两种方法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-02T02:22:45.546Z">
-<meta property="article:modified_time" content="2023-03-02T02:26:28.789Z">
+<meta property="article:published_time" content="2023-04-02T15:46:49.878Z">
+<meta property="article:modified_time" content="2023-04-02T15:49:09.030Z">
 <meta property="article:author" content="Yuexin Fu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2023/03/02/python%E5%85%83%E7%BB%84%20%E5%AD%97%E5%85%B8%20%E6%A8%A1%E5%9D%97/">
+<link rel="canonical" href="http://example.com/2023/04/02/python%E8%B0%83%E8%AF%95/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>python元组、字典、模块 | BLOG PAGE</title>
+  <title>python调试常用方法 | BLOG PAGE</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/python%E5%85%83%E7%BB%84%20%E5%AD%97%E5%85%B8%20%E6%A8%A1%E5%9D%97/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/02/python%E8%B0%83%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          python元组、字典、模块
+          python调试常用方法
         </h1>
 
         <div class="post-meta">
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-03-02 10:22:45 / Modified: 10:26:28" itemprop="dateCreated datePublished" datetime="2023-03-02T10:22:45+08:00">2023-03-02</time>
+              <time title="Created: 2023-04-02 23:46:49 / Modified: 23:49:09" itemprop="dateCreated datePublished" datetime="2023-04-02T23:46:49+08:00">2023-04-02</time>
             </span>
 
           
@@ -188,33 +188,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ol>
-<li>元组在初始化时一旦确定就无法更改，因此没有append等函数，其他和list类似</li>
-<li>用小括号（）表示</li>
-<li>空元素定义 my_tuple &#x3D; ()</li>
-<li>只定义元素个数 my_tuple &#x3D; (2)</li>
-<li>定义一个元素加上逗号  my_tuple &#x3D; (2,)</li>
-<li>内置函数<br>比较不同元组 cmp(tuple1, tuple2)<br>长度 len(tuple1)<br>列表转化为元组 tuple(my_list)</li>
+        <h2 id="python调试常用方法"><a href="#python调试常用方法" class="headerlink" title="python调试常用方法"></a>python调试常用方法</h2><p>1.<code> print()</code>打印输出  不推荐，会造成代码不易于维护<br>2. <code>assert</code>断言，可以在运行程序时候使用<code>-0</code>关闭<br>3. logg文件，见上个有关错误处理的学习笔记<br>4. pycharm等IDE编程自带调试，方便打断点，单步多步运行，也可以观察变量值<br>5. python  pdb调试</p>
+<p>自己通常使用第四种方法，借助IDE进行调试运行</p>
+<h3 id="pdb调试方法"><a href="#pdb调试方法" class="headerlink" title="pdb调试方法"></a>pdb调试方法</h3><p>分为直接启动和加入断点调试两种方法<br>python pdb官方文档和博客<br><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/pdb.html">https://docs.python.org/zh-cn/3/library/pdb.html</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37294138">https://zhuanlan.zhihu.com/p/37294138</a></p>
+<h4 id="pdb直接启动"><a href="#pdb直接启动" class="headerlink" title="pdb直接启动"></a>pdb直接启动</h4><ol>
+<li>进入pdb调试运行模式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pdb filename.py</span><br></pre></td></tr></table></figure></li>
+<li>输入<code>l</code>查看代码</li>
+<li>输入命令<code>n</code>单步执行代码</li>
+<li>输入命令<code>p</code>查看变量</li>
+<li>结束调试输入<code>q</code></li>
 </ol>
-<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>使用key-value的方式储存数据，达到快速查找的目的，类似于map</p>
-<ol>
-<li>key值不可变，不能用列表</li>
-<li>同一个字典内的key不能重复</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义字典</span></span><br><span class="line">d = &#123;key1 : value1, key2 : value2&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取值</span></span><br><span class="line"><span class="built_in">print</span>( d[key1] )</span><br><span class="line">&gt;&gt;&gt;&gt; value1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改元素，重新赋值即可</span></span><br><span class="line">d[key2] = value</span><br><span class="line"><span class="comment"># 添加元素</span></span><br><span class="line">d[key3] = value3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line"><span class="keyword">del</span> d[key2]</span><br><span class="line"><span class="comment"># 删除字典</span></span><br><span class="line"><span class="keyword">del</span> d</span><br><span class="line"><span class="comment"># 清空</span></span><br><span class="line">d.clear()</span><br></pre></td></tr></table></figure>
-
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ol>
-<li>将自己写的函数和功能进行封装，方便调用</li>
-<li>调用第三方或者其它的库文件</li>
-</ol>
-<h3 id="自己的模块"><a href="#自己的模块" class="headerlink" title="自己的模块"></a>自己的模块</h3><ol>
-<li>放在统一文件夹的目录下</li>
-<li>一定要有_init_.py文件</li>
-<li>文件名称不要和系统内的包或者库重复</li>
-<li>按照层级结构import   例如 import mylib.fyx</li>
-</ol>
-<h3 id="第三方的库"><a href="#第三方的库" class="headerlink" title="第三方的库"></a>第三方的库</h3><p>常规操作如下，两种方式均熟悉</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install XX</span><br><span class="line">conda install XX</span><br></pre></td></tr></table></figure>
+<h4 id="pdb程序中加入断点"><a href="#pdb程序中加入断点" class="headerlink" title="pdb程序中加入断点"></a>pdb程序中加入断点</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入pdb模块</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line">……………………</span><br><span class="line"><span class="comment"># 程序中加入断点，运行到此处会中止</span></span><br><span class="line">pdb.set_trace() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入p查看变量 或者命令c继续运行</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -229,13 +213,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/02/27/python%E5%87%BD%E6%95%B0/" rel="prev" title="python函数">
-      <i class="fa fa-chevron-left"></i> python函数
+    <a href="/2023/04/02/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E5%92%8Clog%E6%89%93%E5%8D%B0/" rel="prev" title="错误处理和log打印">
+      <i class="fa fa-chevron-left"></i> 错误处理和log打印
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/03/20/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B(1)/" rel="next" title="python面向对象编程(1)">
-      python面向对象编程(1) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -294,7 +275,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-number">2.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">自己的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E7%9A%84%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">第三方的库</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E8%B0%83%E8%AF%95%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">python调试常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">pdb调试方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pdb%E7%9B%B4%E6%8E%A5%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">pdb直接启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pdb%E7%A8%8B%E5%BA%8F%E4%B8%AD%E5%8A%A0%E5%85%A5%E6%96%AD%E7%82%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">pdb程序中加入断点</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
